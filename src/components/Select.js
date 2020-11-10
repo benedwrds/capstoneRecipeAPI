@@ -42,7 +42,6 @@ export default function SelectMenu(props) {
     getMealsByCategory();
   }, [category]);
 
-  //console.log(meals);
   //console.log(filter)
   //console.log(this.setState({filter: true}))
 
