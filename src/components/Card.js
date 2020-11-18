@@ -73,7 +73,7 @@ const [expanded, setExpanded] = useState(false);
         //     <MoreVertIcon />
         //   </IconButton>
         // }
-         title={props.Meal.strMeal}
+        title={props.Meal.strMeal}
         //subheader="September 14, 2016"
       />
       <CardMedia

@@ -24,6 +24,18 @@ class Home extends React.Component {
     ingredientsLoading: true
   }
 
+
+//****** Florin Pop code ******
+//   ingredAndMeasure = () => {
+//     const ingred = []
+//     for(let i=1; i<=20; i++){
+//       if(mealData['strIngredient' + i]){
+//             ingred.push(`${mealData['strIngredient'+i] / ${mealData['strMeasure'+i]}`)
+//       }else{
+//         break;
+//       }
+//   }
+// }
   // const ingredientsArr = (obj) => {
   //   let newArr = Object.entries(obj);
   //   let filtered = newArr.filter(item => {
@@ -142,30 +154,37 @@ class Home extends React.Component {
     //     }
     //     </>
    // </div>
+       
        {
-        if(this.state.filter){
        // if(this.toggleShowHide){
           return(
             <div>
-               <RecipeReviewCard/> 
-                 {console.log(this.state.filter)} 
-         <SelectMenu filter={this.state.filter} setFilter={this.setFilter} /> 
-         {console.log("Hello "+ this.state.filter)} 
+                {console.log(this.state.filter)} 
+                <SelectMenu filter={this.state.filter} setFilter={this.setFilter} /> 
+              {!this.state.filter && (
+                <RecipeReviewCard
+                Meal={this.state.random} 
+                Ingredients={this.state.ingredients} 
+                Measurements={this.state.measurements}
+                />
+                )
+              }
+         {/* {console.log("Hello "+ this.state.filter)}  */}
            </div>  
           );
-        } else {
-          return (
-          <div>
-          <SelectMenu filter={this.state.filter} setFilter={this.setFilter} />
-            <h2>Featured Recipe:</h2>
-            <RecipeReviewCard
-            Meal={this.state.random} 
-            Ingredients={this.state.ingredients} 
-            Measurements={this.state.measurements}/>
-          </div>
-          )
-        } 
+          // return (
+          // <div>
+          // <SelectMenu filter={this.state.filter} setFilter={this.setFilter} />
+          //   <h2>Featured Recipe:</h2>
+          //   <RecipeReviewCard
+          //   Meal={this.state.random} 
+          //   Ingredients={this.state.ingredients} 
+          //   Measurements={this.state.measurements}
+          //   />
+          // </div>
+          // )
+
       }
   } 
 }
-export default Home
+export default Home;

@@ -75,8 +75,6 @@ export default function SelectMenu(props) {
   return (
     <div>
       <h1>Recipe Finder</h1>
-      {/* this.state.filter works below* line 66/}
-      {/* {console.log(filter)} */}
       {/* <input
         value={category}
         onChange={(e) => setCategory(e.target.value)}
@@ -126,7 +124,8 @@ export default function SelectMenu(props) {
               <img style={{width: "20%", height: "auto"}} src={meal.strMealThumb}/>
             </div>
           )
-        })}
+        })
+        }
     </div>
   );
 }
