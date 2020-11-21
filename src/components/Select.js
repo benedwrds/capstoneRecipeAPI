@@ -1,12 +1,13 @@
-import React, { useState, useEffect }from 'react';
+import React, { useEffect }from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
-import Card from './Card'
-//import { Link } from 'react-router-dom'
+import Card from './RecipeReviewCard'
+import { Link } from 'react-router-dom'
+import IndividualMeal from './IndividualMeal';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -19,12 +20,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 export default function SelectMenu(props) {
   const classes = useStyles();
           //age, setAge
   const [meals, setMeals] = React.useState([]);
   const [open, setOpen] = React.useState(true); //open, setOpen
   const [category, setCategory] = React.useState("");
+  const [individualMeal, setIndividualMeal] = React.useState("")
 
   const BASE_URL = `https://www.themealdb.com/api/json/v1/1/filter.php?c=`;
 
@@ -71,6 +75,10 @@ export default function SelectMenu(props) {
     //setCategory(true);
   };
 
+  const selectMeal = (id) => {
+      setIndividualMeal(id);
+      //console.log(id)
+  }
 
   return (
     <div>
@@ -116,12 +124,17 @@ export default function SelectMenu(props) {
         meals.map((meal) => {
           return ( 
             // <div>
-            
-            <div key={meal.idMeal}> 
-            {/* <Link to={}></Link> */}
+            //div may be individualmeal component that links to indiMealDetails component
+            <div key={meal.idMeal} mealId={meal.idMeal}> 
+            <Link 
+            //onClick={() => selectMeal(id)} 
+            id={meal.idmeal}//may not need
+            to={`/meal/${meal.idMeal}`}
+            >
              <h3>{meal.strMeal}</h3> 
                {/* <h3 key={meal.idMeal}>{meal.strMeal}</h3> */}
               <img style={{width: "20%", height: "auto"}} src={meal.strMealThumb}/>
+            </Link>
             </div>
           )
         })

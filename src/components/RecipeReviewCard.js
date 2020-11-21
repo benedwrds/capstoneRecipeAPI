@@ -19,6 +19,7 @@ import { red } from '@material-ui/core/colors';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    //background: red[500]
   },
   media: {
     height: 0,
@@ -53,7 +54,6 @@ const [expanded, setExpanded] = useState(false);
 //   measurements : [],
 //   ingredientsLoading: true,
 // }
-
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
