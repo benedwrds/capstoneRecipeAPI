@@ -121,11 +121,11 @@ export default function SelectMenu(props) {
         </Select>
       </FormControl> 
       {meals &&
-        meals.map((meal) => {
+        meals.map((meal, idx) => {
           return ( 
             // <div>
             //div may be individualmeal component that links to indiMealDetails component
-            <div key={meal.idMeal} mealId={meal.idMeal}> 
+             <div key={meal.idMeal}> 
             <Link 
             //onClick={() => selectMeal(id)} 
             id={meal.idmeal}//may not need
