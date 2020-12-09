@@ -6,7 +6,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-//import Collapse from '@material-ui/core/Collapse';
+import Collapse from '@material-ui/core/Collapse';
 //import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
@@ -47,23 +47,26 @@ const IndividualMeal = (props) => {
   const [mealId, setMealId] = React.useState("");
 //Card Component
   const [expanded, setExpanded] = React.useState(false);
-//const [ ingredients, setIngredients] = useState([]);
-//const [ measurements, setMeasurements] = useState([]);
+  const [ingredients, setIngredients] = React.useState([]);
+const [ measurements, setMeasurements] = React.useState([]);
 //const [ isLoading, setIsLoading] = useState(true);
 
-  // ingredientsArr = (obj) => {
-  //   let newArr = Object.entries(obj);
-  //   let filtered= newArr.filter(item => {
-  //     if(item[1] !== ""){
-  //       return item
-  //     }
-  //   })
-  //   let items = filtered.map(item => {
-  //     return item[1]
-  //   })
-  //   //return items
-  //   console.log(items)
-  // }
+
+  const ingredientsArr = (meal) => {
+    for(let i = 1; i <= 20; i++){
+      if(meal["strIngredient" + i]){
+          setIngredients(
+         `${meal["strIngredient" + i]}`
+        );
+      } else {
+        break;
+      }
+    }
+  }
+
+  console.log(measurements)
+  console.log(ingredients);
+
   let id = parseInt(props.match.params.id)
  const BASE_URL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i='
 
@@ -79,8 +82,11 @@ const getMealByName = async () => {
   }
 };
 
+console.log(meal)
+
 useEffect(() => {
   getMealByName();
+  ingredientsArr(meal);
 }, [mealId]);
 
 //Card Component
@@ -137,8 +143,18 @@ const handleExpandClick = () => {
           {/* <ExpandMoreIcon /> */}
         </IconButton>
       </CardActions>
-      {/* <Collapse in={expanded} timeout="auto" unmountOnExit> */}
-        {/* {<CardContent>
+       <Collapse in={expanded} timeout="auto" unmountOnExit> 
+         <CardContent>
+        <Typography paragraph>
+          {/* if ingredients is true return ingredients.map()
+          {ingredients && ingredients.map((item, idx) =>{
+              <ul>
+                 <li>{item}</li>
+              </ul> 
+          })
+        } */}
+        </Typography>
+        {/* 
           <Typography paragraph>Method:</Typography>
           <Typography paragraph>
             {props.Meal.strInstructions}
@@ -162,8 +178,9 @@ const handleExpandClick = () => {
           <Typography>
             Set aside off of the heat to let rest for 10 minutes, and then serve.
           </Typography>
-        </CardContent> */}
-      {/* </Collapse> */}
+        */}
+        </CardContent> 
+      </Collapse>
     </Card>
   )
 }
