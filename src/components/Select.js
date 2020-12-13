@@ -37,6 +37,7 @@ export default function SelectMenu(props) {
       const res = await fetch(BASE_URL + category);
       const data = await res.json();
       setMeals(data.meals);
+      console.log(data.meals)
     } catch (e) {
       console.log(e);
     }

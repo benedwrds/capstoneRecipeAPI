@@ -42,7 +42,8 @@ const useStyles = makeStyles((theme) => ({
 
 const IndividualMeal = (props) => {
   const classes = useStyles();
-  const [meal, setMeal] = React.useState([]);
+  const [meal, setMeal] = React.useState({});
+  const [mealObj, setMealObj] = React.useState([]);
   const [open, setOpen] = React.useState(true); //open, setOpen
   const [mealId, setMealId] = React.useState("");
 //Card Component
@@ -50,22 +51,6 @@ const IndividualMeal = (props) => {
   const [ingredients, setIngredients] = React.useState([]);
 const [ measurements, setMeasurements] = React.useState([]);
 //const [ isLoading, setIsLoading] = useState(true);
-
-
-  const ingredientsArr = (meal) => {
-    for(let i = 1; i <= 20; i++){
-      if(meal["strIngredient" + i]){
-          setIngredients(
-         `${meal["strIngredient" + i]}`
-        );
-      } else {
-        break;
-      }
-    }
-  }
-
-  console.log(measurements)
-  console.log(ingredients);
 
   let id = parseInt(props.match.params.id)
  const BASE_URL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i='
@@ -76,18 +61,63 @@ const getMealByName = async () => {
     const res = await fetch(BASE_URL + id);
     const data = await res.json();
     setMeal(data.meals[0]);
-   console.log(data)
+    setMealObj(data.meals)
+   //console.log(data)
   } catch (e) {
     console.log(e);
   }
 };
 
-console.log(meal)
+//cleaned up data
+  let y = []
+  function clean (obj){
+    for (var propName in obj) { 
+      if (obj[propName] === null || obj[propName] === "") {
+      delete obj[propName];
+      }
+    }
+    y.push(obj)
+  console.log(obj)
+  //setMealObj(obj)
+}
+
+console.log(y) //this shows an empty array
+//console.log(meal.strMeasure1 + " " + meal.strIngredient1)
+  //console.log(clean(meal))
+  console.log(y) //this shows the data 
+
+// const ingredientsArr = () => {
+//   //console.log(y)
+//   // for(let i= 1; i <= 20; i++){
+
+//   } 
+
+
+  // const ingredientsArr = (mealObj) => {
+  //   for(let i = 1; i <= 20; i++){
+  //     // let toString = i.toString();
+  //     // let ingred = "strIngredient";
+  //     // let ingredToString = ingred + toString;
+  //     // console.log(ingredToString);
+  //     console.log(i)
+  //     if(mealObj[ingredToString]){
+  //         setIngredients(
+  //        `${mealObj[ingredToString]}`
+  //       );
+  //     } else {
+  //       break;
+  //     }
+  //   }
+  // }
+  //console.log()
+  //console.log(mealObj[0].strIngredient)
+
+  //console.log(ingredients);
 
 useEffect(() => {
   getMealByName();
-  ingredientsArr(meal);
-}, [mealId]);
+  //ingredientsArr(mealObj);
+}, []);
 
 //Card Component
 const handleExpandClick = () => {
