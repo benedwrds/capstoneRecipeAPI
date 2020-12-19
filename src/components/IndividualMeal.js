@@ -11,6 +11,7 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
+import IndividualMealClass from './IndividualMealClass';
 //import FavoriteIcon from '@material-ui/icons/Favorite';
 //import ShareIcon from '@material-ui/icons/Share';
 //import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -46,6 +47,7 @@ const IndividualMeal = (props) => {
   const [mealObj, setMealObj] = React.useState([]);
   const [open, setOpen] = React.useState(true); //open, setOpen
   const [mealId, setMealId] = React.useState("");
+
 //Card Component
   const [expanded, setExpanded] = React.useState(false);
   const [ingredients, setIngredients] = React.useState([]);
@@ -68,55 +70,58 @@ const getMealByName = async () => {
   }
 };
 
-//cleaned up data
-  let y = []
+  //let y = [];
+  let measureNew = [];
+  let ingredNew = [];
   function clean (obj){
     for (var propName in obj) { 
       if (obj[propName] === null || obj[propName] === "") {
       delete obj[propName];
+      } 
+    }
+    // const ingredNew = []
+      for(let i = 1; i <= 20; i++){
+   // `${strMeasure[i] strIngredient[i]}`
+      let toString = i.toString();
+      let ingred = "strIngredient";
+      let ingredToString = ingred + toString;
+      console.log(ingredToString);
+      console.log(i)
+      if(obj[ingredToString]){
+        ingredNew.push(`${obj[ingredToString]}`)
+      } else {
+        break;
       }
     }
-    y.push(obj)
-  console.log(obj)
-  //setMealObj(obj)
-}
+    console.log(ingredNew)
 
-console.log(y) //this shows an empty array
-//console.log(meal.strMeasure1 + " " + meal.strIngredient1)
-  //console.log(clean(meal))
-  console.log(y) //this shows the data 
+    // const measureNew = []
+    for(let i = 1; i <= 20; i++){
+ // `${strMeasure[i] strIngredient[i]}`
+    let toString = i.toString();
+    let ingred = "strMeasure";
+    let ingredToString = ingred + toString;
+    console.log(ingredToString);
+    console.log(i)
+    if(obj[ingredToString]){
+      measureNew.push(`${obj[ingredToString]}`)
+      //   setIngredients(
+      //  `${obj[ingredToString]}`
+      //);
+    } else {
+      break;
+    }
+  }
+  console.log(measureNew)
+  } 
+    //y.push(obj)
 
-// const ingredientsArr = () => {
-//   //console.log(y)
-//   // for(let i= 1; i <= 20; i++){
 
-//   } 
-
-
-  // const ingredientsArr = (mealObj) => {
-  //   for(let i = 1; i <= 20; i++){
-  //     // let toString = i.toString();
-  //     // let ingred = "strIngredient";
-  //     // let ingredToString = ingred + toString;
-  //     // console.log(ingredToString);
-  //     console.log(i)
-  //     if(mealObj[ingredToString]){
-  //         setIngredients(
-  //        `${mealObj[ingredToString]}`
-  //       );
-  //     } else {
-  //       break;
-  //     }
-  //   }
-  // }
-  //console.log()
-  //console.log(mealObj[0].strIngredient)
-
-  //console.log(ingredients);
+clean(meal)
 
 useEffect(() => {
   getMealByName();
-  //ingredientsArr(mealObj);
+  //ingredientsArr(meal);
 }, []);
 
 //Card Component
@@ -176,13 +181,14 @@ const handleExpandClick = () => {
        <Collapse in={expanded} timeout="auto" unmountOnExit> 
          <CardContent>
         <Typography paragraph>
-          {/* if ingredients is true return ingredients.map()
-          {ingredients && ingredients.map((item, idx) =>{
+           {/* if ingredients is true return ingredients.map() */}
+          {/* {ingredients && ingredients.map((item, idx) =>{
               <ul>
                  <li>{item}</li>
               </ul> 
-          })
-        } */}
+          }) */}
+      {/*********** TESTING ARRAYS TO SETSTATE **************/}
+        <IndividualMealClass/> 
         </Typography>
         {/* 
           <Typography paragraph>Method:</Typography>
@@ -214,5 +220,4 @@ const handleExpandClick = () => {
     </Card>
   )
 }
-
 export default IndividualMeal;
