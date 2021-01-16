@@ -117,7 +117,7 @@ export default function SelectMenu(props) {
           <MenuItem value={"Starter"}>Starter</MenuItem> 
           <MenuItem value={"Vegan"}></MenuItem>
           <MenuItem value={"Vegetarian"}>Vegetarian</MenuItem>
-          <MenuItem value={"Breakfast"}>Brekafast</MenuItem>
+          <MenuItem value={"Breakfast"}>Breakfast</MenuItem>
           <MenuItem value={"Goat"}>Goat</MenuItem>
         </Select>
       </FormControl> 

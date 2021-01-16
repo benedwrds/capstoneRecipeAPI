@@ -53,6 +53,7 @@ const IndividualMeal = (props) => {
   const [ingredients, setIngredients] = React.useState([]);
 const [ measurements, setMeasurements] = React.useState([]);
 //const [ isLoading, setIsLoading] = useState(true);
+const [combinedState, setCombined] = React.useState()
 
   let id = parseInt(props.match.params.id)
  const BASE_URL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i='
@@ -69,6 +70,8 @@ const getMealByName = async () => {
     console.log(e);
   }
 };
+
+console.log(meal)
 
   //let y = [];
   let measureNew = [];
@@ -119,6 +122,24 @@ const getMealByName = async () => {
 
 clean(meal)
 
+let combinedArr = []
+function combined(){measureNew.reduce((acc, current, index) => {
+  //return current, ingredNew[index]
+  //let ingredNewIndex = ingredNew[index]
+  console.log(current, ingredNew[index])
+  //let combinedVal =  [current, ingredNew[index]]
+  combinedArr.push(current + " " + ingredNew[index]);
+  //setCombined(current + " " + ingredNew[index]);
+  }, [])
+}
+console.log(combinedArr)
+//setCombined(combinedArr)
+
+//const fooder = combinedArr.map((food) => console.log(food))
+//console.log(fooder)
+
+combined(meal)
+
 useEffect(() => {
   getMealByName();
   //ingredientsArr(meal);
@@ -129,9 +150,25 @@ const handleExpandClick = () => {
   setExpanded(!expanded);
 };
 
+// function styleTest(){
+  const styleObject = {
+    //textAlign: "center"
+    position: 'absolute', left: '40%', top: '25%',
+  //}
+}
+
+// return (
+//   // <ul>{ingredList}</ul>
+//   <ul>{combinedArr.map((ingred) => 
+//   <li>{ingred}</li>
+//   )}
+//   </ul>
+// );
+// }
   return (
-    // <div>
-    <Card className={classes.root}>
+     <div>
+    <Card className={classes.root} style={styleObject}> 
+    {/* style={{textAlign: "center"}}> */}
       <CardHeader
         // avatar={
         //   <Avatar aria-label="recipe" className={classes.avatar}>
@@ -153,11 +190,15 @@ const handleExpandClick = () => {
        // title="Paella dish"
       />
       <CardContent>
-                  {/* //font size                           not sure??  */}
-        {/* <Typography variant="body2" color="textSecondary" component="p">
+       {/* <Typography variant="body2" color="textSecondary" component="p">
           This impressive paella is a perfect party dish and a fun meal to cook together with your
           guests. Add 1 cup of frozen peas along with the mussels, if you like.
         </Typography> */}
+            <ul>{combinedArr.map((ingred) => 
+                <li>{ingred}</li>
+              )}
+            </ul>
+        
       </CardContent>
       <CardActions disableSpacing>
         {/* <IconButton aria-label="add to favorites">
@@ -181,6 +222,7 @@ const handleExpandClick = () => {
        <Collapse in={expanded} timeout="auto" unmountOnExit> 
          <CardContent>
         <Typography paragraph>
+
            {/* if ingredients is true return ingredients.map() */}
           {/* {ingredients && ingredients.map((item, idx) =>{
               <ul>
@@ -188,6 +230,10 @@ const handleExpandClick = () => {
               </ul> 
           }) */}
       {/*********** TESTING ARRAYS TO SETSTATE **************/}
+      {/* <ul>{combinedArr.map((ingred) => 
+        <li>{ingred}</li>
+      )}
+      </ul> */}
         <IndividualMealClass/> 
         </Typography>
         {/* 
@@ -214,10 +260,21 @@ const handleExpandClick = () => {
           <Typography>
             Set aside off of the heat to let rest for 10 minutes, and then serve.
           </Typography>
-        */}
+        */}    
+              
         </CardContent> 
       </Collapse>
-    </Card>
+    </Card>     
+    {/* <Card>
+      <CardContent>
+    <ul>{combinedArr.map((ingred) => 
+                        <li>{ingred}</li>
+                      )}
+                      </ul>
+      </CardContent>
+    </Card> */}
+    </div>
   )
 }
+
 export default IndividualMeal;
