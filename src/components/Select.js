@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 120,
   },
+  center: {
+    left: '40%'
+  },
 }));
 
 
@@ -81,8 +84,10 @@ export default function SelectMenu(props) {
       //console.log(id)
   }
 
+
   return (
-    <div>
+  
+    <div className={classes.center}>
       <h1>Recipe Finder</h1>
       {/* <input
         value={category}
@@ -127,14 +132,14 @@ export default function SelectMenu(props) {
             // <div>
             //div may be individualmeal component that links to indiMealDetails component
              <div key={meal.idMeal}> 
-            <Link 
+            <Link
             //onClick={() => selectMeal(id)} 
             id={meal.idmeal}//may not need
             to={`/meal/${meal.idMeal}`}
             >
              <h3>{meal.strMeal}</h3> 
                {/* <h3 key={meal.idMeal}>{meal.strMeal}</h3> */}
-              <img style={{width: "20%", height: "auto"}} src={meal.strMealThumb}/>
+              <img style={{width: "30%", height: "auto"}} src={meal.strMealThumb}/>
             </Link>
             </div>
           )

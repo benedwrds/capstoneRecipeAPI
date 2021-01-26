@@ -19,6 +19,7 @@ import { red } from '@material-ui/core/colors';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    marginLeft: "40%"
     //background: red[500]
   },
   media: {
@@ -39,6 +40,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: red[500],
   },
 }));
+
+
 
 export default function RecipeReviewCard(props) {
   const classes = useStyles();

@@ -4,6 +4,8 @@ import SelectMenu from './Select'
 import Random from './Random'
 import RecipeReviewCard from './RecipeReviewCard';
 
+
+
 class Home extends React.Component {
   state = {
     random: {},
@@ -30,7 +32,6 @@ class Home extends React.Component {
     this.setState(state => ({ filter: bool }))
   }
 
-
   render() {
     {
       return (
@@ -38,8 +39,10 @@ class Home extends React.Component {
           {console.log(this.state.filter)}
           <SelectMenu filter={this.state.filter} setFilter={this.setFilter} />
           {!this.state.filter && (
-            <RecipeReviewCard
-              Meal={this.state.random}
+            <RecipeReviewCard 
+               Meal={this.state.random}
+                //style={{border: "1px solid black"}}
+              //className= "random-card"
             />
           )
           }

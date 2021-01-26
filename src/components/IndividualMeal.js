@@ -11,11 +11,10 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import IndividualMealClass from './IndividualMealClass';
-//import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 //import ShareIcon from '@material-ui/icons/Share';
-//import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-//import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -157,14 +156,6 @@ const handleExpandClick = () => {
   //}
 }
 
-// return (
-//   // <ul>{ingredList}</ul>
-//   <ul>{combinedArr.map((ingred) => 
-//   <li>{ingred}</li>
-//   )}
-//   </ul>
-// );
-// }
   return (
      <div>
     <Card className={classes.root} style={styleObject}> 
@@ -174,10 +165,9 @@ const handleExpandClick = () => {
         //   <Avatar aria-label="recipe" className={classes.avatar}>
         //     R
         //   </Avatar>
-        //}
+        // }
         // action={
         //   <IconButton aria-label="settings">
-        // can't resolve MoreVertIcon
         //     <MoreVertIcon />
         //   </IconButton>
         // }
@@ -198,12 +188,14 @@ const handleExpandClick = () => {
                 <li>{ingred}</li>
               )}
             </ul>
-        
+            <Typography paragraph>
+            {/* {meal.strInstructions} */}
+          </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        {/* <IconButton aria-label="add to favorites">
+        <IconButton aria-label="add to favorites">
           <FavoriteIcon />
-        </IconButton> */}
+        </IconButton>
         <IconButton aria-label="share">
           {/* can't resolve shareIcon */}
           {/* <ShareIcon /> */}
@@ -216,7 +208,8 @@ const handleExpandClick = () => {
           aria-expanded={expanded}
           aria-label="show more"
         >
-          {/* <ExpandMoreIcon /> */}
+          {/* When I click on the expandMoreIcon it gives me an error*/}
+          <ExpandMoreIcon />
         </IconButton>
       </CardActions>
        <Collapse in={expanded} timeout="auto" unmountOnExit> 
@@ -234,14 +227,15 @@ const handleExpandClick = () => {
         <li>{ingred}</li>
       )}
       </ul> */}
-        <IndividualMealClass/> 
         </Typography>
-        {/* 
+         
           <Typography paragraph>Method:</Typography>
           <Typography paragraph>
-            {props.Meal.strInstructions}
+            {/* props.meal.strIns... undefined */}
+            {/* ****** would like my strInstuctions to work here so that when the ExpandMoreIcon is clicked the instructions show up ****** */}
+            {meal.strInstructions}
           </Typography>
-          {/*} 
+           {/*
           <Typography paragraph>
             Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
             heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
@@ -265,14 +259,6 @@ const handleExpandClick = () => {
         </CardContent> 
       </Collapse>
     </Card>     
-    {/* <Card>
-      <CardContent>
-    <ul>{combinedArr.map((ingred) => 
-                        <li>{ingred}</li>
-                      )}
-                      </ul>
-      </CardContent>
-    </Card> */}
     </div>
   )
 }
