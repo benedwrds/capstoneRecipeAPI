@@ -63,7 +63,14 @@ const [expanded, setExpanded] = useState(false);
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root}
+    style={{
+      width: "45%",
+      display: "block",
+      marginLeft: "auto",
+      marginRight: "auto",
+    }}    
+    >
       <CardHeader
         // avatar={
         //   <Avatar aria-label="recipe" className={classes.avatar}>
@@ -77,11 +84,15 @@ const [expanded, setExpanded] = useState(false);
         //   </IconButton>
         // }
         title={props.Meal.strMeal}
+        style={{
+          padding: "16px",
+          display: "block",
+          marginLeft: "35px"}}
         //subheader="September 14, 2016"
       />
       <CardMedia
-        className={classes.media}
-        image={props.Meal.strMealThumb}
+        className={classes.media} 
+        image={props.Meal.strMealThumb}        
        // title="Paella dish"
       />
       <CardContent>

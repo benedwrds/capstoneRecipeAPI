@@ -15,6 +15,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 //import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { authorize } from 'passport';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -152,14 +153,16 @@ const handleExpandClick = () => {
 // function styleTest(){
   const styleObject = {
     //textAlign: "center"
-    position: 'absolute', left: '40%', top: '25%',
+    // position: 'absolute', left: '20%', top: '25%',
   //}
+    // width: '450px', marginLeft: "auto", marginRight: 'auto'
 }
 
   return (
      <div>
-    <Card className={classes.root} style={styleObject}> 
-    {/* style={{textAlign: "center"}}> */}
+    <Card className={classes.root} 
+    style = {styleObject}> 
+      {/* style={{textAlign: "center"}}> */}
       <CardHeader
         // avatar={
         //   <Avatar aria-label="recipe" className={classes.avatar}>
@@ -172,6 +175,7 @@ const handleExpandClick = () => {
         //   </IconButton>
         // }
         title={meal.strMeal}
+        className ="centerRecipeTitle"
         //subheader="September 14, 2016"
       />
       <CardMedia

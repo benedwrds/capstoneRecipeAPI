@@ -1,0 +1,58 @@
+/* For mobile phones: */
+
+.tester1 {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  /* text-align: center; */
+
+}
+
+.selectorSpace {
+  margin-bottom: 30px;
+}
+/* #centerMeal{
+  display: flex !important;
+  justify-content: center !important;
+
+} */
+
+.centerRecipeTitle{
+  display: block;
+  /* justify-content: center; */
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+  
+/*controls the links from flex direction column in mobile version to flex-direction row in table version */
+
+ 
+@media only screen and (min-width: 768px) {
+/* Desktop */
+  .nav-list{
+    display:flex;
+    flex-direction: row;
+  }
+
+  .nav-list li{
+    padding: 27px;
+  }
+}
+  @media only screen and (min-width: 992px) {
+    
+  }
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}
+
+/* 
+
+.SelectText{
+  font-size: 22px;
+  color: black;
+} */ 
