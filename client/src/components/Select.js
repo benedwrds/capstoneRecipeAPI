@@ -87,7 +87,7 @@ export default function SelectMenu(props) {
 
   return (
   
-    <div className={classes.center}>
+    <div className="tester1">
       <h1>Recipe Finder</h1>
       {/* <input
         value={category}
@@ -109,6 +109,7 @@ export default function SelectMenu(props) {
           onOpen={handleOpen}
           value={category}
           onChange={handleChange}
+          className="selectorSpace"
         >
           <MenuItem value=""><em>None</em></MenuItem>
           <MenuItem value={"Beef"}>Beef</MenuItem>
@@ -137,9 +138,19 @@ export default function SelectMenu(props) {
             id={meal.idmeal}//may not need
             to={`/meal/${meal.idMeal}`}
             >
-             <h3>{meal.strMeal}</h3> 
+              <p className="SelectText"
+              style={{textAlign: "center"}}
+              >{meal.strMeal}</p>
+              
+             {/* <h3>{meal.strMeal}</h3>  */}
                {/* <h3 key={meal.idMeal}>{meal.strMeal}</h3> */}
-              <img style={{width: "30%", height: "auto"}} src={meal.strMealThumb}/>
+              <img 
+              style={{width: "40%", height: "auto",  display: "block",
+              marginLeft: "auto",
+              marginRight: "auto"
+              }} 
+              // className="tester1"
+              src={meal.strMealThumb}/>
             </Link>
             </div>
           )

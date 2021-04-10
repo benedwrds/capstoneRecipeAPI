@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import SelectMenu from './Select'
 import Random from './Random'
 import RecipeReviewCard from './RecipeReviewCard';
-
+//import './App.css'
+import '../App.css'
 
 
 class Home extends React.Component {
@@ -40,8 +41,9 @@ class Home extends React.Component {
           <SelectMenu filter={this.state.filter} setFilter={this.setFilter} />
           {!this.state.filter && (
             <RecipeReviewCard 
+            // className ="tester1"
                Meal={this.state.random}
-                //style={{border: "1px solid black"}}
+                style={{width: "100%"}}
               //className= "random-card"
             />
           )

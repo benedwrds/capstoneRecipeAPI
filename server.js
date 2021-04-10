@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require('path')
 
-const users = require("./routes/api/users");
+const users = require("./Routes/api/users");
 
 const app = express();
 // Bodyparser middleware
@@ -12,10 +12,11 @@ const app = express();
 app.use(
   bodyParser.urlencoded({
     extended: false
+    
   })
 );
 app.use(bodyParser.json());// DB Config
-const db = require("./config/keys").mongoURI;// Connect to MongoDB
+const db = require("./Config/keys").mongoURI;// Connect to MongoDB
 mongoose
   .connect(
     //not sure if this the correct localhost string to use??
@@ -33,7 +34,7 @@ mongoose
 // Passport middleware
 app.use(passport.initialize());
 // Passport config
-require("./config/passport")(passport);
+require("./Config/passport")(passport);
 // Routes
 app.use("/api/users", users);
 
