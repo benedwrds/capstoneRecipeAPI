@@ -115,7 +115,7 @@ export default function SelectMenu(props) {
           <MenuItem value={"Beef"}>Beef</MenuItem>
           <MenuItem value={"Chicken"}>Chicken</MenuItem>
           <MenuItem value={"Dessert"}>Dessert</MenuItem> 
-          <MenuItem value={"Lamb"}>Lamb</MenuItem>   
+          <MenuItem value={"Lamb"}>Lamb</MenuItem>  
           <MenuItem value={"Pasta"}>Pasta</MenuItem> 
           <MenuItem value={"Pork"}>Pork</MenuItem>
           <MenuItem value={"Seafood"}>Seafood</MenuItem>
